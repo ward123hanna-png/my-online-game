@@ -1,158 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700;800&family=Cairo:wght@400;600;700;900&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", "Cairo", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+  .animate-marquee-slow {
+    animation: marquee 120s linear infinite;
+  }
+  .animate-float {
+    animation: float 10s ease-in-out infinite;
+  }
 }
 
-/* -------------------------------------------------------------------------- */
-/* THEME: NEON DARK                                                           */
-/* Deep black space profile with bright neon green typography lines.          */
-/* -------------------------------------------------------------------------- */
-.theme-neon {
-  --color-zinc-950: #000000 !important;
-  --color-zinc-900: #050505 !important;
-  --color-zinc-850: #0d0d0d !important;
-  --color-zinc-800: #101511 !important; /* very dark green-black */
-  --color-zinc-700: #22c55e !important; /* neon green accent border */
-  --color-zinc-600: #16a34a !important;
-  --color-zinc-500: #15803d !important;
-  --color-zinc-400: #22c55e !important; /* vibrant neon green */
-  --color-zinc-300: #4ade80 !important;
-  --color-zinc-200: #22c55e !important;
-  --color-zinc-100: #22c55e !important; /* neon green typography */
-  
-  --color-indigo-950: #022c22 !important;
-  --color-indigo-900: #064e3b !important;
-  --color-indigo-800: #065f46 !important;
-  --color-indigo-700: #047857 !important;
-  --color-indigo-600: #22c55e !important; /* green primary button */
-  --color-indigo-500: #22c55e !important;
-  --color-indigo-400: #4ade80 !important;
-  --color-indigo-300: #86efac !important;
-  
-  --color-violet-900: #064e3b !important;
-  --color-purple-900: #022c22 !important;
-  
-  color-scheme: dark !important;
-  text-shadow: 0 0 1px rgba(34, 197, 94, 0.2);
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.theme-neon input, 
-.theme-neon select, 
-.theme-neon textarea {
-  border-color: #22c55e !important;
-  color: #22c55e !important;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
 }
 
-/* -------------------------------------------------------------------------- */
-/* THEME: CYBER BLU                                                           */
-/* Slate charcoal profile with bright cyber cyan text highlights.             */
-/* -------------------------------------------------------------------------- */
-.theme-cyber {
-  --color-zinc-950: #080d1a !important; /* deep slate space profile */
-  --color-zinc-900: #0f172a !important; /* slate-900 card profile */
-  --color-zinc-850: #1e293b !important; /* slate-800 */
-  --color-zinc-800: #334155 !important; /* slate-700 border profile */
-  --color-zinc-700: #06b6d4 !important; /* cyber cyan accents */
-  --color-zinc-600: #0284c7 !important;
-  --color-zinc-500: #0ea5e9 !important; /* cyan sky */
-  --color-zinc-400: #38bdf8 !important;
-  --color-zinc-300: #7dd3fc !important;
-  --color-zinc-200: #bae6fd !important;
-  --color-zinc-100: #e0f2fe !important; /* light cyan-tinted text */
-  
-  --color-indigo-950: #083344 !important;
-  --color-indigo-900: #155e75 !important;
-  --color-indigo-800: #0e7490 !important;
-  --color-indigo-700: #0891b2 !important;
-  --color-indigo-600: #06b6d4 !important; /* cyber cyan primary */
-  --color-indigo-500: #0ea5e9 !important;
-  --color-indigo-400: #38bdf8 !important;
-  --color-indigo-300: #7dd3fc !important;
-  
-  --color-violet-900: #1e1b4b !important;
-  --color-purple-900: #111827 !important;
-  
-  color-scheme: dark !important;
+body, html {
+  overflow-x: hidden;
+  background-color: #fff0f5; /* light pink base */
 }
-
-.theme-cyber input, 
-.theme-cyber select, 
-.theme-cyber textarea {
-  border-color: #06b6d4 !important;
-  color: #e0f2fe !important;
-}
-
-/* -------------------------------------------------------------------------- */
-/* THEME: MONO LIGHT                                                          */
-/* Stark alpine white profile with high-contrast pitch black text.           */
-/* -------------------------------------------------------------------------- */
-.theme-mono {
-  --color-zinc-950: #ffffff !important; /* Stark alpine white profile */
-  --color-zinc-900: #f4f4f5 !important; /* high-contrast light grey cards */
-  --color-zinc-850: #e4e4e7 !important;
-  --color-zinc-800: #000000 !important; /* dark borders */
-  --color-zinc-700: #18181b !important;
-  --color-zinc-600: #27272a !important;
-  --color-zinc-500: #3f3f46 !important;
-  --color-zinc-400: #000000 !important; /* high-contrast pitch black labels */
-  --color-zinc-300: #18181b !important;
-  --color-zinc-200: #000000 !important;
-  --color-zinc-100: #000000 !important; /* pure pitch black text */
-  
-  --color-indigo-950: #e4e4e7 !important;
-  --color-indigo-900: #d4d4d8 !important;
-  --color-indigo-800: #a1a1aa !important;
-  --color-indigo-700: #3f3f46 !important;
-  --color-indigo-600: #000000 !important; /* Pitch black buttons */
-  --color-indigo-500: #18181b !important;
-  --color-indigo-400: #27272a !important;
-  --color-indigo-300: #3f3f46 !important;
-  
-  --color-violet-900: #f4f4f5 !important;
-  --color-purple-900: #ffffff !important;
-  
-  color-scheme: light !important;
-}
-
-.theme-mono input, 
-.theme-mono select, 
-.theme-mono textarea {
-  background-color: #ffffff !important;
-  border-color: #000000 !important;
-  color: #000000 !important;
-}
-
-/* Ensure svgs inside mono-light have rich stroke values */
-.theme-mono svg {
-  stroke: #000000 !important;
-}
-.theme-mono .text-indigo-400 {
-  color: #000000 !important;
-}
-.theme-mono .text-emerald-400,
-.theme-mono .text-emerald-500 {
-  color: #16a34a !important;
-}
-.theme-mono .text-rose-400,
-.theme-mono .text-rose-500 {
-  color: #dc2626 !important;
-}
-.theme-mono .text-amber-400 {
-  color: #d97706 !important;
-}
-.theme-mono .text-zinc-400 {
-  color: #18181b !important;
-}
-.theme-mono .text-zinc-500 {
-  color: #27272a !important;
-}
-.theme-mono .bg-gradient-to-b, 
-.theme-mono .bg-gradient-to-br, 
-.theme-mono .bg-gradient-to-r {
-  background-image: none !important;
-  background-color: #f4f4f5 !important;
-}
-
